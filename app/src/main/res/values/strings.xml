@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">BLE_Terminal</string>
+    <string name="connection_status">Status:</string>
+    <string name="disconnected_state">Disconnected</string>
+    <string name="mac_address">Mac Address</string>
+    <string name="username">Name</string>
+    <string name="characteristic">Characteristic</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+
+    <!--  Connection Status  -->
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="scanning">Scanning</string>
+    <string name="uuid">UUID:</string>
+    <string name="n_a">N/A</string>
+    <string name="value">Value:</string>
+</resources>
