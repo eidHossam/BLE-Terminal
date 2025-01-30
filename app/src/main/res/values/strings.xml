@@ -3,7 +3,7 @@
     <string name="connection_status">Status:</string>
     <string name="disconnected_state">Disconnected</string>
     <string name="mac_address">Mac Address</string>
-    <string name="username">Name</string>
+    <string name="username">Device Name</string>
     <string name="characteristic">Characteristic</string>
     <string name="connect">Connect</string>
     <string name="disconnect">Disconnect</string>
@@ -15,4 +15,20 @@
     <string name="uuid">UUID:</string>
     <string name="n_a">N/A</string>
     <string name="value">Value:</string>
+    <string name="back_button">back button</string>
+    <string name="terminal">Terminal</string>
+    <string name="eraseTerminal">Erase terminal</string>
+    <string name="save_history">Save history</string>
+    <string name="enter_command">Enter command</string>
+    <string name="send_command">Send Command</string>
+    <string name="command_1">On</string>
+    <string name="command_2">Download</string>
+    <string name="command_3">Time</string>
+    <string name="command_4">Alarm</string>
+    <string name="command_5">Alarm 2</string>
+    <string name="command_6">erase</string>
+    <string name="command_7">password</string>
+    <string name="command_8">id</string>
+    <string name="command_9">start</string>
+    <string name="command_10">export</string>
 </resources>

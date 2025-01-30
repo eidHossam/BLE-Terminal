@@ -8,12 +8,25 @@
     android:background="@color/backgroundColor"
     tools:context=".presentation.MainActivity">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="wrap_content"
+        android:text="Connect to a device using either its MAC address or device name"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/macAddressLayout"
+        />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/macAddressLayout"
         android:layout_width="@dimen/_260sdp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_40sdp"
-
         android:layout_marginEnd="@dimen/_40sdp"
         android:hint="@string/mac_address"
         android:textColorHint="@color/black"
@@ -21,10 +34,10 @@
         app:boxStrokeColor="@android:color/darker_gray"
         app:errorEnabled="true"
         app:layout_constrainedHeight="true"
-        app:layout_constraintBottom_toTopOf="@id/usernameLayout"
+        app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider">
+        app:layout_constraintBottom_toTopOf="@id/deviceNameLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/macAddressEditText"
@@ -37,23 +50,23 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/usernameLayout"
+        android:id="@+id/deviceNameLayout"
         android:layout_width="@dimen/_260sdp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_40sdp"
         android:layout_marginEnd="@dimen/_40sdp"
         android:hint="@string/username"
+        app:errorEnabled="true"
         android:textColorHint="@color/black"
         app:boxBackgroundColor="@color/backgroundColor"
         app:boxStrokeColor="@android:color/darker_gray"
-        app:errorEnabled="true"
-        app:layout_constraintBottom_toTopOf="@id/characteristicLayout"
+        app:layout_constraintBottom_toTopOf="@id/connectBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/macAddressLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/usernameEditText"
+            android:id="@+id/deviceNameEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textUri"
@@ -62,31 +75,6 @@
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/characteristicLayout"
-        android:layout_width="@dimen/_260sdp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_40sdp"
-        android:layout_marginEnd="@dimen/_40sdp"
-        android:hint="@string/characteristic"
-        android:textColorHint="@color/black"
-        app:boxBackgroundColor="@color/backgroundColor"
-        app:boxStrokeColor="@android:color/darker_gray"
-        app:errorEnabled="true"
-        app:layout_constraintBottom_toTopOf="@id/connectBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/usernameLayout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/characteristicEditText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="text"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_15sdp"
-            tools:ignore="TextContrastCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/connectBtn"
@@ -98,29 +86,11 @@
         android:textSize="@dimen/_14sdp"
         android:textStyle="bold"
         app:cornerRadius="6.5dp"
-        app:layout_constraintBottom_toTopOf="@id/disconnectBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/characteristicLayout"
-        app:rippleColor="@color/white"
-        app:shapeAppearance="?attr/shapeAppearanceCornerSmall" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/disconnectBtn"
-        android:layout_width="@dimen/_260sdp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/disconnect"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_14sdp"
-        android:textStyle="bold"
-        app:cornerRadius="6.5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/connectBtn"
+        app:layout_constraintTop_toBottomOf="@id/deviceNameLayout"
         app:rippleColor="@color/white"
         app:shapeAppearance="?attr/shapeAppearanceCornerSmall" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

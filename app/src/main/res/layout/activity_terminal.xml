@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    tools:context=".presentation.terminal.TerminalActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:titleTextColor="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+
+            <!-- Back Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/backButton"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="@dimen/_8sdp"
+                android:backgroundTint="?attr/colorPrimary"
+                android:contentDescription="@string/back_button"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:icon="@drawable/arrow_back"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="24dp"
+                app:iconTint="@color/white"
+                app:rippleColor="@android:color/darker_gray" />
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingStart="8dp"
+                android:text="@string/terminal"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <!-- Icons on the right -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/connectDisconnectBtn"
+                    style="@style/Widget.Material3.Button.IconButton"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="@dimen/_8sdp"
+                    android:backgroundTint="?attr/colorPrimary"
+                    android:contentDescription="@string/disconnect"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:icon="@drawable/bluetooth_disabled"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconSize="24dp"
+                    app:iconTint="@color/white"
+                    app:rippleColor="@android:color/darker_gray" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginVertical="@dimen/_8sdp"
+                    android:indeterminate="true"
+                    android:visibility="gone"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:indeterminateTint="@color/white" />
+
+                <Space
+                    android:layout_width="@dimen/_5sdp"
+                    android:layout_height="match_parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/eraseTerminalBtn"
+                    style="@style/Widget.Material3.Button.IconButton"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="@dimen/_8sdp"
+                    android:backgroundTint="?attr/colorPrimary"
+                    android:contentDescription="@string/eraseTerminal"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:icon="@drawable/delete"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconSize="24dp"
+                    app:iconTint="@color/white"
+                    app:rippleColor="@android:color/darker_gray" />
+
+                <Space
+                    android:layout_width="@dimen/_5sdp"
+                    android:layout_height="match_parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/saveHistoryBtn"
+                    style="@style/Widget.Material3.Button.IconButton"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="@dimen/_8sdp"
+                    android:backgroundTint="?attr/colorPrimary"
+                    android:contentDescription="@string/save_history"
+                    android:insetLeft="0dp"
+                    android:insetTop="0dp"
+                    android:insetRight="0dp"
+                    android:insetBottom="0dp"
+                    app:icon="@drawable/save"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconSize="24dp"
+                    app:iconTint="@color/white"
+                    app:rippleColor="@android:color/darker_gray" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/terminalTextView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/terminalBackground"
+        android:padding="16dp"
+        android:scrollbars="vertical"
+        android:textColor="@color/terminalFont"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/controlLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <LinearLayout
+        android:id="@+id/controlLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/terminalTextView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/_5sdp"
+            >
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/command1Btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:text="@string/command_1"
+                android:textColor="@color/white"
+                android:padding="0dp"
+                app:cornerRadius="0dp"
+                app:rippleColor="@android:color/darker_gray"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/command2Btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:text="@string/command_2"
+                android:textColor="@color/white"
+                android:padding="0dp"
+                app:cornerRadius="0dp"
+                app:rippleColor="@android:color/darker_gray"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/command3Btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:text="@string/command_3"
+                android:textColor="@color/white"
+                android:padding="0dp"
+                app:cornerRadius="0dp"
+                app:rippleColor="@android:color/darker_gray"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/command4Btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:text="@string/command_4"
+                android:textColor="@color/white"
+                android:padding="0dp"
+                app:cornerRadius="0dp"
+                app:rippleColor="@android:color/darker_gray"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/command5Btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/command_5"
+                android:textColor="@color/white"
+                android:padding="0dp"
+                app:cornerRadius="0dp"
+                app:rippleColor="@android:color/darker_gray"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/_5sdp"
+            >
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/command6Btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:text="@string/command_6"
+                android:textColor="@color/white"
+                android:padding="0dp"
+                app:cornerRadius="0dp"
+                app:rippleColor="@android:color/darker_gray"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/command7Btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:text="@string/command_7"
+                android:textColor="@color/white"
+                android:padding="0dp"
+                app:cornerRadius="0dp"
+                app:rippleColor="@android:color/darker_gray"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/command8Btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:text="@string/command_8"
+                android:textColor="@color/white"
+                android:padding="0dp"
+                app:cornerRadius="0dp"
+                app:rippleColor="@android:color/darker_gray"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/command9Btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:text="@string/command_9"
+                android:textColor="@color/white"
+                android:padding="0dp"
+                app:cornerRadius="0dp"
+                app:rippleColor="@android:color/darker_gray"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/command10Btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="0dp"
+                android:text="@string/command_10"
+                android:textColor="@color/white"
+                app:cornerRadius="0dp"
+                app:rippleColor="@android:color/darker_gray"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_8sdp"
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/commandFieldLayout"
+                style="?attr/textInputFilledStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginVertical="@dimen/_5sdp"
+                android:layout_weight="1"
+                app:errorEnabled="true"
+                app:boxBackgroundColor="@color/backgroundColor"
+                android:textColorHint="@color/black"
+                android:hint="@string/enter_command">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/commandTextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/sendCommandBtn"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="@dimen/_8sdp"
+                android:backgroundTint="?attr/backgroundColor"
+                android:contentDescription="@string/send_command"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:icon="@drawable/send"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconSize="24dp"
+                app:iconTint="@color/primaryColor"
+                app:rippleColor="@android:color/darker_gray" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

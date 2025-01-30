@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace = "com.hossameid.ble_terminal"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.hossameid.ble_terminal"
