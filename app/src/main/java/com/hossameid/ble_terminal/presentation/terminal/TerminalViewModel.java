@@ -224,6 +224,8 @@ public class TerminalViewModel extends AndroidViewModel {
                 BluetoothGattCharacteristic.WRITE_TYPE_NO_RESPONSE;
         bleModuleChar1.setWriteType(writeType);
 
+        String commandTerminator = "\n";
+        data = data + commandTerminator;
         bleModuleChar1.setValue(data.getBytes(StandardCharsets.UTF_8)); // Convert string to bytes
 
         boolean success = bluetoothGatt.writeCharacteristic(bleModuleChar1);
