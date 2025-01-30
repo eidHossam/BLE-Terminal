@@ -21,7 +21,7 @@ public class BluetoothViewModel extends AndroidViewModel {
     private final Handler handler = new Handler();
     private final Runnable stopScanRunnable;
 
-    // Stops scanning after 10 seconds.
+    // Stops scanning after 100 seconds.
     private static final long SCAN_PERIOD = 100000;
 
     private final MutableLiveData<String> scanResult = new MutableLiveData<>();
